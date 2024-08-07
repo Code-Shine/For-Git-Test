@@ -1,0 +1,47 @@
+# API服务配置文件
+
+# 服务基础配置
+api:
+  name: SampleAPI
+  version: 1.0.0
+  description: "这是一个示例API服务的配置文件"
+  endpoint: /api/v1
+  port: 3000
+  host: 0.0.0.0
+
+# 数据库连接配置
+database:
+  connection:
+    host: localhost
+    port: 5432
+    user: apiuser
+    password: api_password
+    dbname: api_database
+    dialect: postgres
+
+# 认证配置
+auth:
+  jwtSecret: supersecretkey
+  tokenExpiry: 3600  # 令牌过期时间，单位为秒
+  saltRounds: 10     # 密码加密的盐值轮数
+
+# 安全配置
+security:
+  cors:
+    enabled: true
+    allowedOrigins: ["http://localhost:3000", "https://example.com"]
+    allowedMethods: ["GET", "POST", "PUT", "DELETE"]
+    allowedHeaders: ["Content-Type", "Authorization"]
+
+# 日志配置
+logging:
+  level: info
+  format: json
+  file: api.log
+
+# 其他配置项
+additional:
+  rateLimit:
+    enabled: true
+    windowMs: 60000  # 时间窗口，单位为毫秒
+    max: 100         # 时间窗口内允许的最大请求次数
